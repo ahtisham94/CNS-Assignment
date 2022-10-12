@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CNS-Assignment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_keyword">Search By Status</string>
+    <string name="attachments">Attachments</string>
+    <string name="report_id">ID : %1$s</string>
+    <string name="no_files">%1$s Files</string>
+</resources>

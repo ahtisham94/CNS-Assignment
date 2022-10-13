@@ -14,7 +14,8 @@ The whole application is built based on the MVVM architectural pattern.
 
 # Application Architecture
 
-<img src="/Screenshots/clean_architecture.png" width="700" height="500" alt="Tab-Home"/>
+![alt text](https://cdn2.scalablepath.com/_next/image?url=https%3A%2F%2Fcdn-blog.scalablepath.com%2Fuploads%2F2021%2F12%2Fmvvm-reactive-architecture-1024x937.png&w=1200&q=75)
+
 
 
 The main advantage of using MVVM, there is no two way dependency between ViewModel and Model unlike

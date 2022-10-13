@@ -6,4 +6,14 @@
     <string name="attachments">Attachments</string>
     <string name="report_id">ID : %1$s</string>
     <string name="no_files">%1$s Files</string>
+    <string name="dates">Dates</string>
+    <string name="select_start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="actor">Actor</string>
+    <string name="tom_cruise">Tom Cruise</string>
+    <string name="search_keyword_">Search</string>
+    <string name="_20m">20m</string>
+    <string name="report_details">Report Details</string>
+    <string name="report_id_">Report Id : %1$s</string>
+    <string name="description">Description</string>
 </resources>

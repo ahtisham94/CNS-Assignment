@@ -14,6 +14,20 @@ class MainFlowObserver : BaseObservable() {
             notifyPropertyChanged(BR.notification)
         }
 
+    var startDate: String? = ""
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.startDate)
+        }
+
+    var endDate: String? = ""
+        @Bindable get
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.endDate)
+        }
+
     var reportTabList: ArrayList<String>? = arrayListOf()
         @Bindable get
         set(value) {

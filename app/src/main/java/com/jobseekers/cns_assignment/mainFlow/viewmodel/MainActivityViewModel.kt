@@ -2,8 +2,10 @@ package com.jobseekers.cns_assignment.mainFlow.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.jobseekers.cns_assignment.R
 import com.jobseekers.cns_assignment.coreBase.APIState
 import com.jobseekers.cns_assignment.coreBase.BaseViewmodel
+import com.jobseekers.cns_assignment.coreBase.SingleLiveEvent
 import com.jobseekers.cns_assignment.mainFlow.domain.MainFlowUseCase
 import com.jobseekers.cns_assignment.mainFlow.models.MainFlowResponseModel
 import com.jobseekers.cns_assignment.mainFlow.models.ReportResponse
@@ -20,6 +22,11 @@ class MainActivityViewModel @Inject constructor(private val mainFlowUseCase: Mai
 
     var mainFlowObserver = MainFlowObserver()
     lateinit var response: ArrayList<MainFlowResponseModel>
+
+    var clickListener: SingleLiveEvent<Int> = SingleLiveEvent()
+
+    fun clickListener() = clickListener
+
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
         viewModelScope.launch {
             apiChannel.send(APIState.Error(exception.message ?: "Unknown exception"))
@@ -78,5 +85,13 @@ class MainActivityViewModel @Inject constructor(private val mainFlowUseCase: Mai
                 }
             }
         }
+    }
+
+    fun selectStartDate() {
+        clickListener.postValue(R.id.startDateTv)
+    }
+
+    fun selectEndDate() {
+        clickListener.postValue(R.id.endDateTv)
     }
 }

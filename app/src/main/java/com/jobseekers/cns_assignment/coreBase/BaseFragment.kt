@@ -1,5 +1,6 @@
 package com.jobseekers.cns_assignment.coreBase
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +12,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
+import com.google.android.material.datepicker.*
 import com.jobseekers.cns_assignment.R
 import com.jobseekers.cns_assignment.dialogs.SuccessDialog
+import java.text.SimpleDateFormat
+import java.util.*
 
 abstract class BaseFragment<Binding : ViewDataBinding, V : ViewModel> : Fragment() {
 
@@ -25,6 +29,8 @@ abstract class BaseFragment<Binding : ViewDataBinding, V : ViewModel> : Fragment
     abstract fun getBindingVariable(): Int
 
     lateinit var mBaseActivity: BaseActivity<ViewDataBinding, ViewModel>
+
+    private val datePickerBuilder = MaterialDatePicker.Builder.datePicker()
 
     @LayoutRes
     abstract fun getLayoutId(): Int
@@ -92,4 +98,33 @@ abstract class BaseFragment<Binding : ViewDataBinding, V : ViewModel> : Fragment
             InputMethodManager.RESULT_UNCHANGED_SHOWN
         )
     }
-}
+
+    @SuppressLint("SimpleDateFormat")
+    fun getDatePicker(
+        title: String,
+        block: (s: String) -> Unit
+    ) {
+        datePickerBuilder.apply {
+            setTheme(R.style.MaterialCalendarTheme)
+            setTitleText(title)
+            setPositiveButtonText("Done")
+            setNegativeButtonText("Cancel")
+            CalendarConstraints.Builder()
+                .setValidator(DateValidatorPointBackward.now())
+        }
+        val dialog = datePickerBuilder.build()
+        dialog.show(childFragmentManager, "")
+        dialog.apply {
+            addOnPositiveButtonClickListener {
+                val dateFormatter = SimpleDateFormat("dd/MM/yyyy")
+                    block.invoke(dateFormatter.format(Date(it)))
+                    dismiss()
+                }
+                addOnNegativeButtonClickListener {
+                    dismiss()
+                }
+            }
+
+        }
+
+    }

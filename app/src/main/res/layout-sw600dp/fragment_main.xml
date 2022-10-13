@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,8 +10,7 @@
             type="com.jobseekers.cns_assignment.mainFlow.viewmodel.MainActivityViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".mainFlow.fragments.MainFragment">
@@ -18,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/headerLayout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_140sdp"
+            android:layout_height="wrap_content"
             android:background="@color/purple_color"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_30sdp"
@@ -121,7 +122,6 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             app:cardElevation="@dimen/_5sdp"
-
             app:layout_constraintBottom_toBottomOf="@+id/headerLayout"
             app:layout_constraintTop_toBottomOf="@+id/headerLayout">
 
@@ -129,13 +129,15 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:weightSum="3">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/textField"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/_40sdp"
-                    android:hint="@string/search_keyword_"
+                    android:layout_weight="1"
+                    android:hint="@string/search_keyword"
                     app:boxBackgroundColor="@color/white"
                     app:endIconDrawable="@drawable/ic_baseline_search_24"
                     app:endIconMode="custom">
@@ -159,51 +161,38 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/startDateTv"
                     style="@style/titleTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="@string/dates"
-                    android:textColor="@color/purple_color" />
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="@string/select_start_date"
+                    android:onClick="@{()->mainFragment.selectStartDate()}"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="0dp"
+                    android:text="@{mainFragment.mainFlowObserver.startDate}"
+                    android:textColor="@color/purple_color"
+                    android:textColorHint="@color/gray_div_4"
+                    app:drawableEndCompat="@drawable/ic_baseline_calendar_today_24" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/endDateTv"
+                    style="@style/titleTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="@string/end_date"
+                    android:onClick="@{()->mainFragment.selectEndDate()}"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="0dp"
+                    android:text="@{mainFragment.mainFlowObserver.endDate}"
+                    android:textColor="@color/purple_color"
+                    android:textColorHint="@color/gray_div_4"
+                    app:drawableEndCompat="@drawable/ic_baseline_calendar_today_24" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/startDateTv"
-                        style="@style/titleTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:hint="@string/select_start_date"
-                        android:onClick="@{()->mainFragment.selectStartDate()}"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="0dp"
-                        android:text="@{mainFragment.mainFlowObserver.startDate}"
-                        android:textColor="@color/purple_color"
-                        android:textColorHint="@color/gray_div_4"
-                        app:drawableEndCompat="@drawable/ic_baseline_calendar_today_24" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/endDateTv"
-                        style="@style/titleTextView"
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/_35sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:hint="@string/end_date"
-                        android:onClick="@{()->mainFragment.selectEndDate()}"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="0dp"
-                        android:text="@{mainFragment.mainFlowObserver.endDate}"
-                        android:textColor="@color/purple_color"
-                        android:textColorHint="@color/gray_div_4"
-                        app:drawableEndCompat="@drawable/ic_baseline_calendar_today_24" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -223,7 +212,9 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchCv"
+            app:layout_constraintVertical_bias="1.0"
             app:updateAdapter="@{mainFragment.mainFlowObserver.reportList}"
+            tools:layout_editor_absoluteX="-478dp"
             tools:listitem="@layout/item_report_layout" />
 
 

@@ -24,7 +24,7 @@ observing the state changes of the data in the viewmodel).
 
 # Screenshots
 
-<img src="/screenshots/Screenshot_main_screen.png" width="346" height="615" alt="Home"/> 
+<img src="/Screenshots/Tab-2.png" width="346" height="615" alt="Tab-Home"/>
 <img src="/screenshots/Screenshot_search.png" width="346" height="615" alt="Home"/>
 <img src="/screenshots/Screenshot_article_details.png" width="346" height="615" alt="Details"/>
 

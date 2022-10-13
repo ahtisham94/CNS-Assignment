@@ -226,8 +226,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            app:cardCornerRadius="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_20sdp"
             app:cardElevation="@dimen/_5sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/contentLayout"
@@ -292,4 +292,5 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -1,4 +1,4 @@
-# Android MVVM Base Architecture Application using Android Jetpack Components
+# Android MVVM Base Clean Architecture Application using Android Jetpack Components
 
 # Highlights
 

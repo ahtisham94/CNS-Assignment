@@ -3,12 +3,11 @@
 # Highlights
 
 1. MVVM Architectural pattern
-2. Offline Support
-3. Unit test demonstration using JUnit
-4. UI test demonstration using Espresso
-5. Gradle scripts code coverage
+2. Unit test demonstration using JUnit
+3. UI test demonstration using Espresso
+4. Gradle scripts code coverage
 
-The application has been built with **offline support**. It has been designed using **Android
+The application has been built with **online support**. It has been designed using **Android
 Architecture components**.
 
 The whole application is built based on the MVVM architectural pattern.

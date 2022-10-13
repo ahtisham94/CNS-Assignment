@@ -15,7 +15,7 @@ The whole application is built based on the MVVM architectural pattern.
 
 # Application Architecture
 
-<img src="/Screenshots/clean_architecture.png" width="400" height="615" alt="Tab-Home"/>
+<img src="/Screenshots/clean_architecture.png" width="700" height="500" alt="Tab-Home"/>
 
 
 The main advantage of using MVVM, there is no two way dependency between ViewModel and Model unlike

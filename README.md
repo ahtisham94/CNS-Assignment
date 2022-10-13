@@ -15,12 +15,13 @@ The whole application is built based on the MVVM architectural pattern.
 
 # Application Architecture
 
-![alt text](https://cdn2.scalablepath.com/_next/image?url=https%3A%2F%2Fcdn-blog.scalablepath.com%2Fuploads%2F2021%2F12%2Fmvvm-reactive-architecture-1024x937.png&w=1200&q=75)
+<img src="/Screenshots/clean_architecture.png" width="400" height="615" alt="Tab-Home"/>
 
-The main advatage of using MVVM, there is no two way dependency between ViewModel and Model unlike
-MVP. Here the view can observe the datachanges in the viewmodel as we are using LiveData which is
-lifecycle aware. The viewmodel to view communication is achieved through observer pattern (basically
-observing the state changes of the data in the viewmodel).
+
+The main advantage of using MVVM, there is no two way dependency between ViewModel and Model unlike
+MVP. Here the view can observe the datachanges in the viewModel as we are using LiveData which is
+lifecycle aware. The viewModel to view communication is achieved through observer pattern (basically
+observing the state changes of the data in the viewModel).
 
 # Screenshots
 

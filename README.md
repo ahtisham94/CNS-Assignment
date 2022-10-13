@@ -40,6 +40,8 @@ f) JUnit for Unit testing and Espresso for UI testing <br/>
 
 # How to build ?
 
+First make sure you have to JDK install on your machine to build <br/>
+
 Open terminal and type the below command to generate debug build <br/>
 
 ```  ./gradlew assembleDebug ```

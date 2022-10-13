@@ -21,7 +21,7 @@ class MainActivityViewModel @Inject constructor(private val mainFlowUseCase: Mai
     BaseViewmodel() {
 
     var mainFlowObserver = MainFlowObserver()
-    lateinit var response: ArrayList<MainFlowResponseModel>
+    var response: ArrayList<MainFlowResponseModel>? = null
 
     var clickListener: SingleLiveEvent<Int> = SingleLiveEvent()
 
@@ -37,27 +37,29 @@ class MainActivityViewModel @Inject constructor(private val mainFlowUseCase: Mai
      * This method get from data layer and update models
      */
     fun getReports() {
-        viewModelScope.launch(exceptionHandler) {
-            mainFlowUseCase.getReports().collect {
-                when (it) {
-                    is APIState.NetworkResponseSuccess -> {
-                        Log.i("resReports", it.response.toString())
-                        response = it.response as ArrayList<MainFlowResponseModel>
-                        setMainObserver(response[0])
+        if (response == null) {
+            viewModelScope.launch(exceptionHandler) {
+                mainFlowUseCase.getReports().collect {
+                    when (it) {
+                        is APIState.NetworkResponseSuccess -> {
+                            Log.i("resReports", it.response.toString())
+                            response = it.response as ArrayList<MainFlowResponseModel>
+                            setMainObserver(response!![0])
 
-                    }
-                    is APIState.Error -> {
-                        apiChannel.send(it)
+                        }
+                        is APIState.Error -> {
+                            apiChannel.send(it)
 
-                    }
-                    is APIState.ShowHideDialog -> {
-                        apiChannel.send(it)
-                    }
-                    else -> {
+                        }
+                        is APIState.ShowHideDialog -> {
+                            apiChannel.send(it)
+                        }
+                        else -> {
+                        }
                     }
                 }
             }
-        }
+        } else setMainObserver(response = response!![0])
     }
 
     private fun setMainObserver(response: MainFlowResponseModel) {
@@ -74,14 +76,14 @@ class MainActivityViewModel @Inject constructor(private val mainFlowUseCase: Mai
         if (response != null) {
             when (position) {
                 0 -> {
-                    mainFlowObserver.reportList = response[0].inbox
+                    mainFlowObserver.reportList = response!![0].inbox
                 }
                 1 -> {
                     mainFlowObserver.reportList =
-                        response[0].outbox
+                        response!![0].outbox
                 }
                 2 -> {
-                    mainFlowObserver.reportList = response[0].archived
+                    mainFlowObserver.reportList = response!![0].archived
                 }
             }
         }

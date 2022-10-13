@@ -3,6 +3,7 @@ package com.jobseekers.cns_assignment.coreBase
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.consumeAsFlow
+import kotlinx.coroutines.flow.receiveAsFlow
 
 /**
  * This baseview model can handle common functionality for viewmodels
@@ -15,7 +16,7 @@ open class BaseViewmodel : ViewModel() {
      */
     var apiChannel = Channel<APIState<Any>>()
 
-    var apiFlow = apiChannel.consumeAsFlow()
+    var apiFlow = apiChannel.receiveAsFlow()
 
 
 }

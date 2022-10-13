@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.jobseekers.cns_assignment.R
 import com.jobseekers.cns_assignment.dialogs.MyProgressDialog
 import com.jobseekers.cns_assignment.dialogs.SuccessDialog
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -42,8 +43,8 @@ abstract class BaseActivity<Binding : ViewDataBinding, V : ViewModel?> : AppComp
     private fun setObserver() {
         if (baseViewmodel is BaseViewmodel) {
 
-            lifecycleScope.launch {
-                (baseViewmodel as BaseViewmodel).apiFlow.collect {itemType ->
+            lifecycleScope.launch(Dispatchers.Main) {
+                (baseViewmodel as BaseViewmodel).apiFlow.collect { itemType ->
                     when (itemType) {
                         is APIState.ShowHideDialog -> {
                             if (itemType.showHide) progressDialog?.show() else progressDialog?.hide()

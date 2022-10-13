@@ -45,7 +45,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainActivityViewModel>() 
     }
 
     private fun initViews() {
-        getViewModels().getReports()
+            getViewModels().getReports()
         binding.reportsRv.adapter = ReportsAdapter {
             ReportDetailsDialog(
                 requireContext(),

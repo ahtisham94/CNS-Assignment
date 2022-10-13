@@ -23,6 +23,7 @@ object DatabindingAdapters {
     @JvmStatic
     @BindingAdapter(value = ["bindTab"])
     fun bindTabs(tabLayout: TabLayout, list: ArrayList<String>) {
+        tabLayout.removeAllTabs()
         for (item in list) {
             tabLayout.addTab(tabLayout.newTab().setText(item))
         }
